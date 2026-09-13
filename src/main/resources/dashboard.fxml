@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="DashboardController"
+      spacing="20">
+
+    <Label text="Dashboard" styleClass="content-title"/>
+
+    <HBox spacing="20">
+        <VBox styleClass="card" prefWidth="200">
+            <Label text="Saldo em Caixa" styleClass="card-title"/>
+            <Label fx:id="labelSaldo" text="R\$ 0,00" styleClass="card-value"/>
+        </VBox>
+        <VBox styleClass="card" prefWidth="200">
+            <Label text="Produtos Cadastrados" styleClass="card-title"/>
+            <Label fx:id="labelQuantidadeProdutos" text="0" styleClass="card-value"/>
+        </VBox>
+        <VBox styleClass="card" prefWidth="200">
+            <Label text="Clientes Cadastrados" styleClass="card-title"/>
+            <Label fx:id="labelQuantidadeClientes" text="0" styleClass="card-value"/>
+        </VBox>
+    </HBox>
+
+</VBox>

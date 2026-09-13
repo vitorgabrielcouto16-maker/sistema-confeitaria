@@ -41,6 +41,17 @@ public class ProdutoRepository {
                 return produtos;
         }
     }
+    public void atualizarStatus(int id, boolean ativo) throws SQLException {
+        String sql = "UPDATE produtos SET ativoParaVenda = ? WHERE id = ?";
+
+        try (Connection conn = ConexaoBanco.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setBoolean(1, ativo);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        }
+    }
 
 
 

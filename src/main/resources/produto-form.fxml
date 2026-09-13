@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ProdutoFormController"
+      spacing="12" prefWidth="320">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Novo Produto" styleClass="content-title"/>
+
+    <Label text="Nome do Produto"/>
+    <TextField fx:id="campoNome"/>
+
+    <Label text="Preço"/>
+    <TextField fx:id="campoPreco"/>
+
+    <Label text="Descrição"/>
+    <TextField fx:id="campoDescricao"/>
+
+    <CheckBox fx:id="campoAtivo" text="Ativo para venda" selected="true"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancelar" onAction="#cancelar"/>
+        <Button text="Salvar Produto" onAction="#salvar"/>
+    </HBox>
+
+</VBox>

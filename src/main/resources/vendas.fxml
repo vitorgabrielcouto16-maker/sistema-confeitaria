@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="VendasController"
+      spacing="15">
+
+    <Label text="Vendas" styleClass="content-title"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="card">
+        <Label text="Cliente:"/>
+        <ComboBox fx:id="comboCliente" prefWidth="180"/>
+
+        <Label text="Produto:"/>
+        <ComboBox fx:id="comboProduto" prefWidth="180"/>
+
+        <Label text="Qtd:"/>
+        <TextField fx:id="campoQuantidade" prefWidth="60"/>
+
+        <Button text="Adicionar Item" onAction="#adicionarItem"/>
+    </HBox>
+
+    <TableView fx:id="tabelaCarrinho" styleClass="table-view" prefHeight="150">
+        <columns>
+            <TableColumn fx:id="colunaProdutoCarrinho" text="Produto" prefWidth="180"/>
+            <TableColumn fx:id="colunaQuantidadeCarrinho" text="Qtd" prefWidth="80"/>
+            <TableColumn fx:id="colunaPrecoCarrinho" text="Preço Unit." prefWidth="100"/>
+            <TableColumn fx:id="colunaSubtotalCarrinho" text="Subtotal" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Label fx:id="labelTotal" text="Total: R\$ 0,00" styleClass="card-value"/>
+        <Button text="Finalizar Venda" onAction="#finalizarVenda"/>
+    </HBox>
+
+    <Label text="Histórico de Vendas" styleClass="content-title"/>
+
+    <TableView fx:id="tabelaHistorico" styleClass="table-view" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colunaIdVenda" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colunaDataVenda" text="Data" prefWidth="100"/>
+            <TableColumn fx:id="colunaClienteVenda" text="Cliente" prefWidth="150"/>
+            <TableColumn fx:id="colunaTotalVenda" text="Total" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+</VBox>

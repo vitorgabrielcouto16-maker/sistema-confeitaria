@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="MainLayoutController"
+            stylesheets="@styles.css">
+
+    <left>
+        <VBox styleClass="sidebar" prefWidth="220">
+            <Label text="Confeitaria" styleClass="logo-label"/>
+            <Label text="Sistema de Gestão" styleClass="subtitle-label"/>
+
+            <Button fx:id="btnDashboard" text="Dashboard" styleClass="nav-button" maxWidth="Infinity" onAction="#abrirDashboard"/>
+            <Button fx:id="btnProdutos" text="Produtos" styleClass="nav-button" maxWidth="Infinity" onAction="#abrirProdutos"/>
+            <Button fx:id="btnClientes" text="Clientes" styleClass="nav-button" maxWidth="Infinity" onAction="#abrirClientes"/>
+            <Button fx:id="btnVendas" text="Vendas" styleClass="nav-button" maxWidth="Infinity" onAction="#abrirVendas"/>
+            <Button fx:id="btnCaixa" text="Caixa" styleClass="nav-button" maxWidth="Infinity" onAction="#abrirCaixa"/>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="areaConteudo">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+        </StackPane>
+    </center>
+
+</BorderPane>

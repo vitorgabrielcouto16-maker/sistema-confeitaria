@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="CaixaController"
+      spacing="18">
+
+    <Label text="Caixa" styleClass="content-title"/>
+
+    <HBox spacing="16">
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Saldo Atual" styleClass="stat-card-title"/>
+            <Label fx:id="labelSaldo" text="R$ 0,00" styleClass="stat-card-value"/>
+        </VBox>
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Entradas do Mês" styleClass="stat-card-title"/>
+            <Label fx:id="labelEntradasMes" text="R$ 0,00" styleClass="stat-card-value" style="-fx-text-fill: #2f9e5c;"/>
+        </VBox>
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Saídas do Mês" styleClass="stat-card-title"/>
+            <Label fx:id="labelSaidasMes" text="R$ 0,00" styleClass="stat-card-value" style="-fx-text-fill: #d1555a;"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="lancamento-card">
+        <ComboBox fx:id="comboTipo" prefWidth="120"/>
+        <TextField fx:id="campoValor" promptText="Valor" prefWidth="100"/>
+        <TextField fx:id="campoDescricao" promptText="Descrição" prefWidth="220"/>
+        <Button text="Lançar" onAction="#lancarMovimento"/>
+    </HBox>
+
+    <TableView fx:id="tabelaMovimentos" styleClass="table-view" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colunaData" text="Data" prefWidth="100"/>
+            <TableColumn fx:id="colunaTipo" text="Tipo" prefWidth="90"/>
+            <TableColumn fx:id="colunaDescricao" text="Descrição" prefWidth="250"/>
+            <TableColumn fx:id="colunaValor" text="Valor" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+</VBox>

@@ -1,0 +1,175 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color:  #fbf6f2;
+}
+
+.sidebar {
+    -fx-background-color: white;
+    -fx-padding: 20 0 20 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 2, 0);
+}
+
+.logo-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e85d8a;
+    -fx-padding: 0 0 0 20;
+}
+
+.subtitle-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #999999;
+    -fx-padding: 0 0 20 20;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #444444;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 20 12 20;
+    -fx-pref-width: 200px;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+}
+
+.nav-button:hover {
+    -fx-background-color: #fce8ef;
+}
+.nav-button-selected {
+    -fx-background-color: #e85d8a;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 20 12 20;
+    -fx-pref-width: 200px;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
+}
+
+.card-title {
+    -fx-font-size: 12px;
+    -fx-text-fill: #999999;
+}
+
+.card-value {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.content-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.table-view {
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
+}
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f8f8fa;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 40px;
+    -fx-border-color: transparent transparent #e5e5e8 transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #666666;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #f0f0f2 transparent;
+    -fx-cell-size: 40px;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #fafafb;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #fce8ef;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #e85d8a;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #333333;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 10 0 10;
+}
+
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+}
+
+.table-view .filler {
+    -fx-background-color: #f8f8fa;
+}
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 3);
+}
+
+.stat-card-title {
+    -fx-font-size: 12px;
+    -fx-text-fill: #a89b95;
+}
+
+.stat-card-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.badge {
+    -fx-padding: 4 12 4 12;
+    -fx-background-radius: 20;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+.badge-entrada {
+    -fx-background-color: #dff5e6;
+    -fx-text-fill: #2f9e5c;
+}
+
+.badge-saida {
+    -fx-background-color: #fde3e3;
+    -fx-text-fill: #d1555a;
+}
+
+.lancamento-card {
+    -fx-background-color: #fdf8f4;
+    -fx-background-radius: 14;
+    -fx-padding: 16;
+    -fx-border-color: #f0e4da;
+    -fx-border-radius: 14;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ClientesController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding><Insets top="0" right="0" bottom="15" left="0"/></padding>
+            <TextField fx:id="campoNome" promptText="Nome do cliente"/>
+            <TextField fx:id="campoTelefone" promptText="Telefone"/>
+            <Button text="Salvar" onAction="#salvarCliente"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tabelaClientes" styleClass="table-view">
+            <columns>
+                <TableColumn fx:id="colunaId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colunaNome" text="Nome" prefWidth="200"/>
+                <TableColumn fx:id="colunaTelefone" text="Telefone" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

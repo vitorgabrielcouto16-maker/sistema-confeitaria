@@ -52,7 +52,7 @@ public class CriadorTabelas {
                     data TEXT,
                     valor REAL,
                     descricao TEXT,
-                    entrada TEXT
+                    tipo TEXT
                 )
                 """);
         }
