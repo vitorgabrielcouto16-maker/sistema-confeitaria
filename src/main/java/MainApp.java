@@ -8,6 +8,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        CriadorTabelas.criarTabelas();
+
         Parent root = FXMLLoader.load(getClass().getResource("/main-layout.fxml"));
         Scene scene = new Scene(root, 1000, 600);
 

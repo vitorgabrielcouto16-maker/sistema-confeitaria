@@ -18,6 +18,7 @@ public class VendasController {
     @FXML private ComboBox<Cliente> comboCliente;
     @FXML private ComboBox<Produto> comboProduto;
     @FXML private TextField campoQuantidade;
+    @FXML private ComboBox<String> comboFormaPagamento;
     @FXML private Label labelTotal;
 
     @FXML private TableView<ItemCarrinho> tabelaCarrinho;
@@ -30,11 +31,13 @@ public class VendasController {
     @FXML private TableColumn<Venda, Integer> colunaIdVenda;
     @FXML private TableColumn<Venda, String> colunaDataVenda;
     @FXML private TableColumn<Venda, String> colunaClienteVenda;
+    @FXML private TableColumn<Venda, String> colunaFormaPagamentoVenda;
     @FXML private TableColumn<Venda, Double> colunaTotalVenda;
 
     private final ClienteRepository clienteRepository = new ClienteRepository();
     private final ProdutoRepository produtoRepository = new ProdutoRepository();
     private final VendaRepository vendaRepository = new VendaRepository();
+    private final MovimentoCaixaRepository movimentoCaixaRepository = new MovimentoCaixaRepository();
 
     private final ObservableList<ItemCarrinho> carrinho = FXCollections.observableArrayList();
     private final Map<Integer, String> nomesClientes = new HashMap<>();
@@ -72,6 +75,10 @@ public class VendasController {
             }
         };
         comboProduto.setConverter(conversorProduto);
+
+        comboFormaPagamento.setItems(FXCollections.observableArrayList(
+                "Pix", "Cartão de Crédito", "Cartão de Débito", "Dinheiro", "Outros"));
+        comboFormaPagamento.setValue("Pix");
     }
 
     private void configurarTabelaCarrinho() {
@@ -91,6 +98,9 @@ public class VendasController {
         colunaClienteVenda.setCellValueFactory(cell ->
                 new javafx.beans.property.SimpleStringProperty(
                         nomesClientes.getOrDefault(cell.getValue().getClienteId(), "Cliente #" + cell.getValue().getClienteId())));
+        colunaFormaPagamentoVenda.setCellValueFactory(cell ->
+                new javafx.beans.property.SimpleStringProperty(
+                        cell.getValue().getFormaPagamento() == null ? "-" : cell.getValue().getFormaPagamento()));
         colunaTotalVenda.setCellValueFactory(cell ->
                 new javafx.beans.property.SimpleDoubleProperty(cell.getValue().getTotal()).asObject());
     }
@@ -164,13 +174,15 @@ public class VendasController {
             return;
         }
 
+        String formaPagamento = comboFormaPagamento.getValue();
+
         try {
             List<ItemVenda> itens = new ArrayList<>();
             for (ItemCarrinho item : carrinho) {
                 itens.add(new ItemVenda(item.getQuantidade(), item.getProduto().getPreco(), item.getProduto().getId()));
             }
 
-            Venda venda = new Venda(LocalDate.now(), cliente.getIdCliente(), itens);
+            Venda venda = new Venda(LocalDate.now(), cliente.getIdCliente(), itens, formaPagamento);
             vendaRepository.salvar(venda);
 
             Entrada entradaCaixa = new Entrada(
@@ -182,6 +194,7 @@ public class VendasController {
 
             carrinho.clear();
             atualizarTotal();
+            comboFormaPagamento.setValue("Pix");
             carregarHistorico();
         } catch (SQLException e) {
             mostrarErro("Erro ao salvar venda: " + e.getMessage());
@@ -192,5 +205,4 @@ public class VendasController {
         Alert alert = new Alert(Alert.AlertType.ERROR, mensagem);
         alert.showAndWait();
     }
-    private final MovimentoCaixaRepository movimentoCaixaRepository = new MovimentoCaixaRepository();
 }

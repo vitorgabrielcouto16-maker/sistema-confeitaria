@@ -1,4 +1,7 @@
 ### IntelliJ IDEA ###
+target/
+release/
+*.db
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/

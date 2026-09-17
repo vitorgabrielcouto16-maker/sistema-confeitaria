@@ -31,6 +31,7 @@ public class CaixaController {
     public void initialize() {
         comboTipo.setItems(FXCollections.observableArrayList("Entrada", "Saída"));
         comboTipo.setValue("Entrada");
+        MascaraMoeda.aplicar(campoValor);
 
         colunaData.setCellValueFactory(cell ->
                 new javafx.beans.property.SimpleStringProperty(cell.getValue().getData().toString()));
@@ -100,7 +101,7 @@ public class CaixaController {
     @FXML
     private void lancarMovimento() {
         try {
-            double valor = Double.parseDouble(campoValor.getText());
+            double valor = MascaraMoeda.paraDouble(campoValor.getText());
             if (valor <= 0) {
                 mostrarErro("O valor deve ser maior que zero.");
                 return;

@@ -7,26 +7,32 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="ProdutoFormController"
-      spacing="12" prefWidth="320">
+      spacing="14" prefWidth="360" styleClass="root">
 
-    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
 
     <Label text="Novo Produto" styleClass="content-title"/>
 
-    <Label text="Nome do Produto"/>
-    <TextField fx:id="campoNome"/>
+    <VBox spacing="4">
+        <Label text="Nome do Produto" styleClass="field-label"/>
+        <TextField fx:id="campoNome" styleClass="text-field-custom"/>
+    </VBox>
 
-    <Label text="Preço"/>
-    <TextField fx:id="campoPreco"/>
+    <VBox spacing="4">
+        <Label text="Preço" styleClass="field-label"/>
+        <TextField fx:id="campoPreco" styleClass="text-field-custom"/>
+    </VBox>
 
-    <Label text="Descrição"/>
-    <TextField fx:id="campoDescricao"/>
+    <VBox spacing="4">
+        <Label text="Descrição" styleClass="field-label"/>
+        <TextField fx:id="campoDescricao" styleClass="text-field-custom"/>
+    </VBox>
 
     <CheckBox fx:id="campoAtivo" text="Ativo para venda" selected="true"/>
 
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Button text="Cancelar" onAction="#cancelar"/>
-        <Button text="Salvar Produto" onAction="#salvar"/>
+        <Button text="Cancelar" onAction="#cancelar" styleClass="btn-secondary"/>
+        <Button text="Salvar Produto" onAction="#salvar" styleClass="btn-primary"/>
     </HBox>
 
 </VBox>

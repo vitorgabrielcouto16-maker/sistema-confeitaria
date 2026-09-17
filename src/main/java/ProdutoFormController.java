@@ -13,6 +13,11 @@ public class ProdutoFormController {
     @FXML private TextField campoDescricao;
     @FXML private CheckBox campoAtivo;
 
+    @FXML
+    public void initialize() {
+        MascaraMoeda.aplicar(campoPreco);
+    }
+
     private final ProdutoRepository produtoRepository = new ProdutoRepository();
     private Runnable aoSalvar;
 
@@ -28,7 +33,7 @@ public class ProdutoFormController {
                 mostrarErro("Informe o nome do produto.");
                 return;
             }
-            double preco = Double.parseDouble(campoPreco.getText());
+            double preco = MascaraMoeda.paraDouble(campoPreco.getText());
             String descricao = campoDescricao.getText();
             boolean ativo = campoAtivo.isSelected();
 

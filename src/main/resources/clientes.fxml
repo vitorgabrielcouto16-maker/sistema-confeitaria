@@ -8,12 +8,16 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="ClientesController">
 
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT">
             <padding><Insets top="0" right="0" bottom="15" left="0"/></padding>
-            <TextField fx:id="campoNome" promptText="Nome do cliente"/>
-            <TextField fx:id="campoTelefone" promptText="Telefone"/>
-            <Button text="Salvar" onAction="#salvarCliente"/>
+            <TextField fx:id="campoNome" promptText="Nome do cliente" styleClass="text-field-custom"/>
+            <TextField fx:id="campoTelefone" promptText="Telefone" styleClass="text-field-custom"/>
+            <Button text="Salvar" onAction="#salvarCliente" styleClass="btn-primary"/>
         </HBox>
     </top>
 
@@ -23,6 +27,7 @@
                 <TableColumn fx:id="colunaId" text="ID" prefWidth="50"/>
                 <TableColumn fx:id="colunaNome" text="Nome" prefWidth="200"/>
                 <TableColumn fx:id="colunaTelefone" text="Telefone" prefWidth="150"/>
+                <TableColumn fx:id="colunaAcao" text="Ação" prefWidth="150"/>
             </columns>
         </TableView>
     </center>

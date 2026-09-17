@@ -52,6 +52,16 @@ public class ProdutoRepository {
             stmt.executeUpdate();
         }
     }
+    public void apagarProduto(int id) throws SQLException {
+    String sql = "DELETE FROM produtos  WHERE id = ?";
+
+        try (Connection conn = ConexaoBanco.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
 
 
 

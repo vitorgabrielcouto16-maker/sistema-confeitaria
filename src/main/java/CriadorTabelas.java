@@ -30,6 +30,7 @@ public class CriadorTabelas {
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     dataVenda TEXT,
                     clienteId INTEGER,
+                    formaPagamento TEXT,
                     FOREIGN KEY (clienteId) REFERENCES clientes(id)
                 )
                 """);

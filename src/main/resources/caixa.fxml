@@ -9,6 +9,10 @@
       fx:controller="CaixaController"
       spacing="18">
 
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
     <Label text="Caixa" styleClass="content-title"/>
 
     <HBox spacing="16">
@@ -27,10 +31,10 @@
     </HBox>
 
     <HBox spacing="10" alignment="CENTER_LEFT" styleClass="lancamento-card">
-        <ComboBox fx:id="comboTipo" prefWidth="120"/>
-        <TextField fx:id="campoValor" promptText="Valor" prefWidth="100"/>
-        <TextField fx:id="campoDescricao" promptText="Descrição" prefWidth="220"/>
-        <Button text="Lançar" onAction="#lancarMovimento"/>
+        <ComboBox fx:id="comboTipo" prefWidth="120" styleClass="combo-box-custom"/>
+        <TextField fx:id="campoValor" promptText="Valor" prefWidth="100" styleClass="text-field-custom"/>
+        <TextField fx:id="campoDescricao" promptText="Descrição" prefWidth="220" styleClass="text-field-custom"/>
+        <Button text="Lançar" onAction="#lancarMovimento" styleClass="btn-primary"/>
     </HBox>
 
     <TableView fx:id="tabelaMovimentos" styleClass="table-view" VBox.vgrow="ALWAYS">

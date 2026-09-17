@@ -6,7 +6,7 @@ import java.util.List;
 public class VendaRepository {
     public void salvar(Venda venda) throws SQLException {
 
-        String sql = "INSERT INTO vendas (dataVenda, clienteId) VALUES (?, ?)";
+        String sql = "INSERT INTO vendas (dataVenda, clienteId, formaPagamento) VALUES (?, ?, ?)";
 
         try (Connection conn = ConexaoBanco.getConexao()) {
             conn.setAutoCommit(false);
@@ -15,6 +15,7 @@ public class VendaRepository {
                 PreparedStatement stmtVenda = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 stmtVenda.setString(1, venda.getDataVenda().toString());
                 stmtVenda.setInt(2, venda.getClienteId());
+                stmtVenda.setString(3, venda.getFormaPagamento());
                 stmtVenda.executeUpdate();
                 ResultSet keys = stmtVenda.getGeneratedKeys();
                 int vendaId = 0;
@@ -77,7 +78,8 @@ public class VendaRepository {
                         rs.getInt("id"),
                         data,
                         rs.getInt("clienteId"),
-                        itens
+                        itens,
+                        rs.getString("formaPagamento")
                 );
                 vendas.add(venda);
 

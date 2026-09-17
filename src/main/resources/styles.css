@@ -101,7 +101,7 @@
 .table-view .table-row-cell {
     -fx-background-color: white;
     -fx-border-color: transparent transparent #f0f0f2 transparent;
-    -fx-cell-size: 40px;
+    -fx-cell-size: 46px;
 }
 
 .table-view .table-row-cell:odd {
@@ -172,4 +172,97 @@
     -fx-padding: 16;
     -fx-border-color: #f0e4da;
     -fx-border-radius: 14;
+}
+.field-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #a89b95;
+    -fx-font-weight: bold;
+}
+
+.combo-box-custom {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #e5d9d0;
+    -fx-border-radius: 8;
+    -fx-padding: 2 6 2 6;
+    -fx-font-size: 13px;
+}
+
+.combo-box-custom:hover,
+.combo-box-custom:focused {
+    -fx-border-color: #e85d8a;
+}
+
+.combo-box-custom .list-cell {
+    -fx-text-fill: #444444;
+    -fx-padding: 6 8 6 8;
+}
+
+.text-field-custom {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #e5d9d0;
+    -fx-border-radius: 8;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 13px;
+}
+
+.text-field-custom:focused {
+    -fx-border-color: #e85d8a;
+}
+
+.btn-primary {
+    -fx-background-color: #e85d8a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #d94b7a;
+}
+.btn-secondary {
+    -fx-background-color: #f0e4da;
+    -fx-text-fill: #7a6f68;
+    -fx-font-size: 12px;
+    -fx-background-radius: 6;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #e5d5c8;
+}
+.vendas-chart {
+    -fx-background-color: transparent;
+}
+
+.vendas-chart .chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.vendas-chart .chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.vendas-chart .chart-horizontal-grid-lines {
+    -fx-stroke: #f0f0f2;
+}
+
+.vendas-chart .axis {
+    -fx-tick-label-fill: #a89b95;
+    -fx-font-size: 11px;
+}
+
+.vendas-chart .axis-label {
+    -fx-text-fill: #a89b95;
+}
+
+.vendas-chart .default-color0.chart-bar {
+    -fx-bar-fill: linear-gradient(to top, #e85d8a, #f6a8c4);
+    -fx-background-radius: 8 8 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(232,93,138,0.25), 6, 0, 0, 2);
 }

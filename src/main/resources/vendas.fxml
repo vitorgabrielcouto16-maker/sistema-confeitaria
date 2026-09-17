@@ -7,45 +7,59 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="VendasController"
-      spacing="15">
+      spacing="20">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
 
     <Label text="Vendas" styleClass="content-title"/>
 
-    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="card">
-        <Label text="Cliente:"/>
-        <ComboBox fx:id="comboCliente" prefWidth="180"/>
+    <VBox styleClass="lancamento-card" spacing="12">
+        <HBox spacing="15" alignment="BOTTOM_LEFT">
+            <VBox spacing="4">
+                <Label text="Cliente" styleClass="field-label"/>
+                <ComboBox fx:id="comboCliente" styleClass="combo-box-custom" prefWidth="180"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Produto" styleClass="field-label"/>
+                <ComboBox fx:id="comboProduto" styleClass="combo-box-custom" prefWidth="220"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Quantidade" styleClass="field-label"/>
+                <TextField fx:id="campoQuantidade" promptText="Qtd" styleClass="text-field-custom" prefWidth="80"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Forma de Pagamento" styleClass="field-label"/>
+                <ComboBox fx:id="comboFormaPagamento" styleClass="combo-box-custom" prefWidth="170"/>
+            </VBox>
+            <Button text="+ Adicionar" onAction="#adicionarItem" styleClass="btn-primary"/>
+        </HBox>
+    </VBox>
 
-        <Label text="Produto:"/>
-        <ComboBox fx:id="comboProduto" prefWidth="180"/>
-
-        <Label text="Qtd:"/>
-        <TextField fx:id="campoQuantidade" prefWidth="60"/>
-
-        <Button text="Adicionar Item" onAction="#adicionarItem"/>
-    </HBox>
-
-    <TableView fx:id="tabelaCarrinho" styleClass="table-view" prefHeight="150">
+    <TableView fx:id="tabelaCarrinho" styleClass="table-view" prefHeight="180">
         <columns>
-            <TableColumn fx:id="colunaProdutoCarrinho" text="Produto" prefWidth="180"/>
+            <TableColumn fx:id="colunaProdutoCarrinho" text="Produto" prefWidth="240"/>
             <TableColumn fx:id="colunaQuantidadeCarrinho" text="Qtd" prefWidth="80"/>
-            <TableColumn fx:id="colunaPrecoCarrinho" text="Preço Unit." prefWidth="100"/>
-            <TableColumn fx:id="colunaSubtotalCarrinho" text="Subtotal" prefWidth="100"/>
+            <TableColumn fx:id="colunaPrecoCarrinho" text="Preço Unit." prefWidth="120"/>
+            <TableColumn fx:id="colunaSubtotalCarrinho" text="Subtotal" prefWidth="120"/>
         </columns>
     </TableView>
 
-    <HBox spacing="15" alignment="CENTER_LEFT">
-        <Label fx:id="labelTotal" text="Total: R\$ 0,00" styleClass="card-value"/>
-        <Button text="Finalizar Venda" onAction="#finalizarVenda"/>
+    <HBox alignment="CENTER_RIGHT" spacing="20">
+        <Label fx:id="labelTotal" text="Total: R\$ 0,00" styleClass="stat-card-value"/>
+        <Button text="Finalizar Venda" onAction="#finalizarVenda" styleClass="btn-primary"/>
     </HBox>
 
-    <Label text="Histórico de Vendas" styleClass="content-title"/>
+    <Label text="Histórico de Vendas" styleClass="stat-card-title"/>
 
-    <TableView fx:id="tabelaHistorico" styleClass="table-view" VBox.vgrow="ALWAYS">
+    <TableView fx:id="tabelaHistorico" styleClass="table-view" prefHeight="220">
         <columns>
             <TableColumn fx:id="colunaIdVenda" text="ID" prefWidth="50"/>
             <TableColumn fx:id="colunaDataVenda" text="Data" prefWidth="100"/>
-            <TableColumn fx:id="colunaClienteVenda" text="Cliente" prefWidth="150"/>
-            <TableColumn fx:id="colunaTotalVenda" text="Total" prefWidth="100"/>
+            <TableColumn fx:id="colunaClienteVenda" text="Cliente" prefWidth="180"/>
+            <TableColumn fx:id="colunaFormaPagamentoVenda" text="Pagamento" prefWidth="150"/>
+            <TableColumn fx:id="colunaTotalVenda" text="Total" prefWidth="120"/>
         </columns>
     </TableView>
 

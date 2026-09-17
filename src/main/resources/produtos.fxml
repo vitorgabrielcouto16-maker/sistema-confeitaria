@@ -8,10 +8,14 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="ProdutosController">
 
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
     <top>
         <HBox spacing="10" alignment="CENTER_RIGHT">
             <padding><Insets top="0" right="0" bottom="15" left="0"/></padding>
-            <Button text="+ Novo Produto" onAction="#abrirFormularioNovoProduto"/>
+            <Button text="+ Novo Produto" onAction="#abrirFormularioNovoProduto" styleClass="btn-primary"/>
         </HBox>
     </top>
 
@@ -23,7 +27,7 @@
                 <TableColumn fx:id="colunaPreco" text="Preço" prefWidth="100"/>
                 <TableColumn fx:id="colunaDescricao" text="Descrição" prefWidth="200"/>
                 <TableColumn fx:id="colunaAtivo" text="Ativo" prefWidth="80"/>
-                <TableColumn fx:id="colunaAcao" text="Ação" prefWidth="120"/>
+                <TableColumn fx:id="colunaAcao" text="Ação" prefWidth="180"/>
             </columns>
         </TableView>
     </center>

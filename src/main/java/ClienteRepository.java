@@ -37,4 +37,15 @@ public class ClienteRepository {
             return clientes;
         }
     }
+    public void apagarCliente(int id) throws SQLException {
+        String sql = "DELETE FROM clientes  WHERE id = ?";
+
+        try (Connection conn = ConexaoBanco.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
+
 }

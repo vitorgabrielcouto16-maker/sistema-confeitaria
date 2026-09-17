@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -12,17 +13,53 @@
     <Label text="Dashboard" styleClass="content-title"/>
 
     <HBox spacing="20">
-        <VBox styleClass="card" prefWidth="200">
-            <Label text="Saldo em Caixa" styleClass="card-title"/>
-            <Label fx:id="labelSaldo" text="R\$ 0,00" styleClass="card-value"/>
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Saldo em Caixa" styleClass="stat-card-title"/>
+            <Label fx:id="labelSaldo" text="R\$ 0,00" styleClass="stat-card-value"/>
         </VBox>
-        <VBox styleClass="card" prefWidth="200">
-            <Label text="Produtos Cadastrados" styleClass="card-title"/>
-            <Label fx:id="labelQuantidadeProdutos" text="0" styleClass="card-value"/>
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Produtos Cadastrados" styleClass="stat-card-title"/>
+            <Label fx:id="labelQuantidadeProdutos" text="0" styleClass="stat-card-value"/>
         </VBox>
-        <VBox styleClass="card" prefWidth="200">
-            <Label text="Clientes Cadastrados" styleClass="card-title"/>
-            <Label fx:id="labelQuantidadeClientes" text="0" styleClass="card-value"/>
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Clientes Cadastrados" styleClass="stat-card-title"/>
+            <Label fx:id="labelQuantidadeClientes" text="0" styleClass="stat-card-value"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="20">
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Faturamento do Mês" styleClass="stat-card-title"/>
+            <Label fx:id="labelFaturamentoMes" text="R\$ 0,00" styleClass="stat-card-value"/>
+        </VBox>
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Vendas de Hoje" styleClass="stat-card-title"/>
+            <Label fx:id="labelVendasHoje" text="R\$ 0,00" styleClass="stat-card-value"/>
+        </VBox>
+        <VBox styleClass="stat-card" prefWidth="200">
+            <Label text="Despesas do Mês" styleClass="stat-card-title"/>
+            <Label fx:id="labelDespesasMes" text="R\$ 0,00" styleClass="stat-card-value"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="20">
+        <VBox styleClass="stat-card" spacing="10" prefWidth="620">
+            <Label text="Vendas dos Últimos 7 Dias" styleClass="stat-card-title"/>
+            <BarChart fx:id="graficoVendas" styleClass="vendas-chart" legendVisible="false"
+                      animated="false" prefHeight="320" horizontalGridLinesVisible="true"
+                      verticalGridLinesVisible="false">
+                <xAxis>
+                    <CategoryAxis label="" side="BOTTOM"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="" side="LEFT"/>
+                </yAxis>
+            </BarChart>
+        </VBox>
+
+        <VBox styleClass="stat-card" spacing="12" prefWidth="320">
+            <Label text="Top Doces Mais Vendidos" styleClass="stat-card-title"/>
+            <VBox fx:id="containerTopProdutos" spacing="10"/>
         </VBox>
     </HBox>
 

@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -30,12 +31,22 @@ public class ProdutosController {
         colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricaoProduto"));
         colunaAtivo.setCellValueFactory(new PropertyValueFactory<>("ativoParaVenda"));
         colunaAcao.setCellFactory(coluna -> new TableCell<>() {
-            private final Button botao = new Button();
+            private final Button botaoStatus = new Button();
+            private final Button botaoExcluir = new Button("Excluir");
+            private final HBox caixaBotoes = new HBox(5, botaoStatus, botaoExcluir);
 
             {
-                botao.setOnAction(e -> {
+                botaoStatus.getStyleClass().add("btn-secondary");
+                botaoExcluir.getStyleClass().add("btn-danger");
+
+                botaoStatus.setOnAction(e -> {
                     Produto produto = getTableView().getItems().get(getIndex());
                     alternarStatus(produto);
+                });
+
+                botaoExcluir.setOnAction(e -> {
+                    Produto produto = getTableView().getItems().get(getIndex());
+                    apagarProduto(produto);
                 });
             }
 
@@ -47,8 +58,8 @@ public class ProdutosController {
                     return;
                 }
                 Produto produto = getTableView().getItems().get(getIndex());
-                botao.setText(produto.isAtivoParaVenda() ? "Desativar" : "Ativar");
-                setGraphic(botao);
+                botaoStatus.setText(produto.isAtivoParaVenda() ? "Desativar" : "Ativar");
+                setGraphic(caixaBotoes);
             }
         });
         carregarProdutos();
@@ -69,6 +80,14 @@ public class ProdutosController {
             mostrarErro("Erro ao atualizar produto: " + e.getMessage());
         }
     }
+    private void apagarProduto(Produto produto) {
+        try {
+            produtoRepository.apagarProduto(produto.getId());
+            carregarProdutos();
+        } catch (SQLException e) {
+            mostrarErro("Erro ao excluir produto: " + e.getMessage());
+        }
+    }
 
     @FXML
     private void abrirFormularioNovoProduto() {
@@ -79,12 +98,15 @@ public class ProdutosController {
             ProdutoFormController controller = loader.getController();
             controller.setAoSalvar(this::carregarProdutos);
 
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+
             Stage stage = new Stage();
             stage.setTitle("Novo Produto");
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
-            mostrarErro("Erro ao abrir formulário: " + e.getMessage());
+            mostrarErro("Erro ao excluir produto: " + e.getMessage());
         }
     }
 
