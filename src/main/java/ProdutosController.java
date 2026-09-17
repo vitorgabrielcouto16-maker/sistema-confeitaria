@@ -67,7 +67,7 @@ public class ProdutosController {
 
     private void carregarProdutos() {
         try {
-            tabelaProdutos.setItems(FXCollections.observableArrayList(produtoRepository.listarTodos()));
+            tabelaProdutos.setItems(FXCollections.observableArrayList(produtoRepository.listarDisponiveis()));
         } catch (SQLException e) {
             mostrarErro("Erro ao carregar produtos: " + e.getMessage());
         }

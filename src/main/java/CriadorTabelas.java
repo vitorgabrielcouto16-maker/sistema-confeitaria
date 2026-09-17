@@ -16,6 +16,11 @@ public class CriadorTabelas {
                     descricaoProduto TEXT
                 )
                 """);
+            try {
+                stmt.execute("ALTER TABLE produtos ADD COLUMN excluido INTEGER DEFAULT 0");
+            } catch (SQLException e) {
+                // Coluna já existe (banco criado antes dessa mudança) — pode ignorar
+            }
 
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS clientes(

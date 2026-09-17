@@ -53,7 +53,7 @@ public class ProdutoRepository {
         }
     }
     public void apagarProduto(int id) throws SQLException {
-    String sql = "DELETE FROM produtos  WHERE id = ?";
+        String sql = "UPDATE produtos SET excluido = 1 WHERE id = ?";
 
         try (Connection conn = ConexaoBanco.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -63,6 +63,27 @@ public class ProdutoRepository {
         }
     }
 
+    public List<Produto> listarDisponiveis() throws SQLException {
+        String sql = "SELECT * FROM produtos WHERE excluido = 0 OR excluido IS NULL";
+        List<Produto> produtos = new ArrayList<>();
+
+        try (Connection conn = ConexaoBanco.getConexao();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Produto produto = new Produto(
+                        rs.getString("nome"),
+                        rs.getDouble("preco"),
+                        rs.getBoolean("ativoParaVenda"),
+                        rs.getString("descricaoProduto"),
+                        rs.getInt("id")
+                );
+                produtos.add(produto);
+            }
+            return produtos;
+        }
+    }
 
 
 }

@@ -114,7 +114,7 @@ public class VendasController {
                 nomesClientes.put(c.getIdCliente(), c.getNome());
             }
 
-            List<Produto> produtos = produtoRepository.listarTodos();
+            List<Produto> produtos = produtoRepository.listarDisponiveis();
             comboProduto.setItems(FXCollections.observableArrayList(produtos));
         } catch (SQLException e) {
             mostrarErro("Erro ao carregar dados: " + e.getMessage());
