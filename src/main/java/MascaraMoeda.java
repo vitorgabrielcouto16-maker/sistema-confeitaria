@@ -6,8 +6,15 @@ import java.util.Locale;
 
 public class MascaraMoeda {
 
-    private static final DecimalFormatSymbols SIMBOLOS_BR = new DecimalFormatSymbols(Locale.of("pt", "BR"));
+    private static final DecimalFormatSymbols SIMBOLOS_BR = criarSimbolosBR();
     private static final DecimalFormat FORMATO_BR = new DecimalFormat("#,##0.00", SIMBOLOS_BR);
+
+    private static DecimalFormatSymbols criarSimbolosBR() {
+        DecimalFormatSymbols simbolos = new DecimalFormatSymbols(Locale.ROOT);
+        simbolos.setDecimalSeparator(',');
+        simbolos.setGroupingSeparator('.');
+        return simbolos;
+    }
 
     public static void aplicar(TextField campo) {
         campo.textProperty().addListener((obs, valorAntigo, valorNovo) -> {
